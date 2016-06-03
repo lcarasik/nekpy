@@ -22,6 +22,20 @@ def uniform_profile(ind, num, start, end):
     delta = (end - start) / num
     return start + ind * delta, delta
 
+def 2sidehyper(num, start, end, stretfact)
+   """This will create a mesh with spacing with clustering near end points"""
+    """NOT TESTED YET TO ENSURE IT WORKS PROPERLY and DOES NOT USE IND"""
+    # Currently assumes Num is number of 'grid points'
+    import numpy as np
+    I = 1.0 # This index should stay one to work properly. The rescaling/offset is applied later.
+    u = np.linspace(0.0,I,num) # Uniform spacing
+    s = np.zeros(num) # Initialize of new spacing
+    for i in range(o,num): # Use to create new spacing
+      s[i] = 0.5*(1 + np.tanh(stretfact*u[i]/I - 0.5)/np.tanh(0.5*stretfact))
+    
+    s = s*(np.sqrt(end**2 + start**2)) - (end - start)/2 # Use to scale to user specific geometry
+    return s
+
 class Mesh:
 
   def __init__(self, root, corner, n, boundaries):
